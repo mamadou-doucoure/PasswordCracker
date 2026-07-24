@@ -78,18 +78,19 @@ java -cp bin passwordcracker.Main -m DICO -h 00000000000000000000000000000000
 
 ## 7. Difficultés rencontrées
 
-- Éviter la duplication du calcul MD5 entre les deux stratégies : résolu en extrayant un utilitaire
-  partagé `MD5Util`.
-- Le patron Simple Factory impose que `HashCrackerFactory` connaisse à l'avance toutes les stratégies
-  disponibles : ajouter une nouvelle méthode de cassage nécessite de modifier cette classe (cf. section
-  suivante).
+Au début j'avais dupliqué le calcul du MD5 dans les deux stratégies, donc j'ai sorti ça dans une classe
+utilitaire `MD5Util` pour éviter la répétition.
+
+Autre point : la fabrique doit connaître à l'avance toutes les stratégies disponibles. Du coup si on veut
+ajouter une nouvelle méthode de cassage plus tard, il faudra modifier `HashCrackerFactory` (voir la
+conclusion ci-dessous).
 
 ## 8. Conclusion
 
 Le patron Simple Factory a permis de centraliser la création des objets et de garder le programme
-principal indépendant des classes concrètes. Sa limite principale est la nécessité de modifier la fabrique
-pour ajouter une nouvelle stratégie, ce qui viole le principe Open/Closed , ce sera traitée dans la version
-suivante du projet à l'aide d'un patron de création plus flexible.
+principal indépendant des classes concrètes. Par contre il a une vraie limite : pour ajouter une nouvelle
+stratégie il faut modifier la fabrique, ce qui viole le principe Open/Closed. On verra comment corriger ça
+avec un patron de création plus flexible dans le prochain mini-projet.
 
 Les réponses détaillées aux questions de réflexion du sujet sont disponibles dans
 [`docs/questions-reflexion.md`](docs/questions-reflexion.md).
