@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 770" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 800" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
   <defs>
     <marker id="implMarker" markerWidth="18" markerHeight="16" refX="16" refY="8" orient="auto">
       <path d="M0,0 L16,8 L0,16 Z" fill="white" stroke="black" stroke-width="1.4"/>
@@ -8,83 +8,85 @@
     </marker>
   </defs>
 
-  <rect x="0" y="0" width="1020" height="770" fill="white"/>
+  <rect x="0" y="0" width="1020" height="800" fill="white"/>
 
   <!-- Title -->
   <text x="510" y="32" text-anchor="middle" font-size="19" font-weight="700" fill="black">PasswordCracker — Diagramme de classes</text>
   <text x="510" y="52" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Mise en œuvre du patron Simple Factory</text>
 
   <!-- ===================== HashCracker (interface) ===================== -->
-  <rect x="350" y="75" width="300" height="100" fill="white" stroke="black" stroke-width="1.4"/>
+  <!-- La description tient DANS la boite : aucune fleche ne peut plus la traverser -->
+  <rect x="350" y="75" width="300" height="140" fill="white" stroke="black" stroke-width="1.4"/>
   <text x="500" y="99" text-anchor="middle" font-style="italic" font-size="12" fill="black">&#171;interface&#187;</text>
   <text x="500" y="121" text-anchor="middle" font-size="18" font-weight="700" fill="black">HashCracker</text>
   <line x1="350" y1="132" x2="650" y2="132" stroke="black" stroke-width="1"/>
   <text x="368" y="155" font-family="Consolas, monospace" font-size="13" fill="black">+ crack(hash: String): String</text>
-  <text x="500" y="196" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Le contrat commun : toute stratégie sait « craquer » un hash</text>
+  <text x="500" y="196" text-anchor="middle" font-size="11" font-style="italic" fill="#555">Le contrat commun à toutes les stratégies</text>
 
   <!-- ===================== HashCrackerFactory ===================== -->
-  <rect x="700" y="75" width="280" height="100" fill="white" stroke="black" stroke-width="1.4"/>
+  <rect x="700" y="75" width="280" height="140" fill="white" stroke="black" stroke-width="1.4"/>
   <text x="840" y="103" text-anchor="middle" font-size="17" font-weight="700" fill="black">HashCrackerFactory</text>
   <line x1="700" y1="116" x2="980" y2="116" stroke="black" stroke-width="1"/>
   <text x="712" y="138" font-family="Consolas, monospace" font-size="12.5" fill="black">+ create(method: String):</text>
   <text x="730" y="156" font-family="Consolas, monospace" font-size="12.5" fill="black">HashCracker</text>
-  <text x="840" y="196" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Sait quelle stratégie créer, sans que Main la connaisse</text>
+  <text x="840" y="196" text-anchor="middle" font-size="11" font-style="italic" fill="#555">Choisit la bonne stratégie à créer</text>
 
   <!-- ===================== DictionaryHashCracker ===================== -->
-  <rect x="40" y="320" width="340" height="150" fill="white" stroke="black" stroke-width="1.4"/>
-  <text x="210" y="346" text-anchor="middle" font-size="16.5" font-weight="700" fill="black">DictionaryHashCracker</text>
-  <line x1="40" y1="360" x2="380" y2="360" stroke="black" stroke-width="1"/>
-  <text x="54" y="382" font-family="Consolas, monospace" font-size="12.5" fill="black">- dictionaryPath: String</text>
-  <text x="54" y="402" font-family="Consolas, monospace" font-size="12.5" fill="black">- attempts: long</text>
-  <line x1="40" y1="414" x2="380" y2="414" stroke="black" stroke-width="1"/>
-  <text x="54" y="436" font-family="Consolas, monospace" font-size="12.5" fill="black">+ crack(hash: String): String</text>
-  <text x="54" y="456" font-family="Consolas, monospace" font-size="12.5" fill="black">+ getAttempts(): long</text>
-  <text x="210" y="490" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Cherche le mot dans une liste connue (dictionnaire)</text>
+  <rect x="40" y="340" width="340" height="175" fill="white" stroke="black" stroke-width="1.4"/>
+  <text x="210" y="366" text-anchor="middle" font-size="16.5" font-weight="700" fill="black">DictionaryHashCracker</text>
+  <line x1="40" y1="380" x2="380" y2="380" stroke="black" stroke-width="1"/>
+  <text x="54" y="402" font-family="Consolas, monospace" font-size="12.5" fill="black">- dictionaryPath: String</text>
+  <text x="54" y="422" font-family="Consolas, monospace" font-size="12.5" fill="black">- attempts: long</text>
+  <line x1="40" y1="434" x2="380" y2="434" stroke="black" stroke-width="1"/>
+  <text x="54" y="456" font-family="Consolas, monospace" font-size="12.5" fill="black">+ crack(hash: String): String</text>
+  <text x="54" y="476" font-family="Consolas, monospace" font-size="12.5" fill="black">+ getAttempts(): long</text>
+  <text x="210" y="502" text-anchor="middle" font-size="11" font-style="italic" fill="#555">Cherche le mot dans un dictionnaire connu</text>
 
   <!-- ===================== BruteForceHashCracker ===================== -->
-  <rect x="440" y="320" width="340" height="150" fill="white" stroke="black" stroke-width="1.4"/>
-  <text x="610" y="346" text-anchor="middle" font-size="16.5" font-weight="700" fill="black">BruteForceHashCracker</text>
-  <line x1="440" y1="360" x2="780" y2="360" stroke="black" stroke-width="1"/>
-  <text x="454" y="382" font-family="Consolas, monospace" font-size="12.5" fill="black">- attempts: long</text>
-  <line x1="440" y1="394" x2="780" y2="394" stroke="black" stroke-width="1"/>
-  <text x="454" y="416" font-family="Consolas, monospace" font-size="12.5" fill="black">+ crack(hash: String): String</text>
-  <text x="454" y="436" font-family="Consolas, monospace" font-size="12.5" fill="black">+ getAttempts(): long</text>
-  <text x="610" y="490" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Essaie toutes les combinaisons (a, b, … aaaa)</text>
+  <rect x="440" y="340" width="340" height="175" fill="white" stroke="black" stroke-width="1.4"/>
+  <text x="610" y="366" text-anchor="middle" font-size="16.5" font-weight="700" fill="black">BruteForceHashCracker</text>
+  <line x1="440" y1="380" x2="780" y2="380" stroke="black" stroke-width="1"/>
+  <text x="454" y="402" font-family="Consolas, monospace" font-size="12.5" fill="black">- attempts: long</text>
+  <line x1="440" y1="434" x2="780" y2="434" stroke="black" stroke-width="1"/>
+  <text x="454" y="456" font-family="Consolas, monospace" font-size="12.5" fill="black">+ crack(hash: String): String</text>
+  <text x="454" y="476" font-family="Consolas, monospace" font-size="12.5" fill="black">+ getAttempts(): long</text>
+  <text x="610" y="502" text-anchor="middle" font-size="11" font-style="italic" fill="#555">Essaie toutes les combinaisons possibles</text>
 
   <!-- ===================== MD5Util ===================== -->
-  <rect x="330" y="590" width="280" height="110" fill="white" stroke="black" stroke-width="1.4"/>
-  <text x="470" y="614" text-anchor="middle" font-style="italic" font-size="12" fill="black">&#171;utilitaire&#187;</text>
-  <text x="470" y="636" text-anchor="middle" font-size="16" font-weight="700" fill="black">MD5Util</text>
-  <line x1="330" y1="648" x2="610" y2="648" stroke="black" stroke-width="1"/>
-  <text x="344" y="670" font-family="Consolas, monospace" font-size="12.5" fill="black">+ hash(input: String): String</text>
-  <text x="470" y="716" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Calcule un hash MD5 (code partagé, pas de duplication)</text>
+  <rect x="330" y="610" width="280" height="110" fill="white" stroke="black" stroke-width="1.4"/>
+  <text x="470" y="634" text-anchor="middle" font-style="italic" font-size="12" fill="black">&#171;utilitaire&#187;</text>
+  <text x="470" y="656" text-anchor="middle" font-size="16" font-weight="700" fill="black">MD5Util</text>
+  <line x1="330" y1="668" x2="610" y2="668" stroke="black" stroke-width="1"/>
+  <text x="344" y="690" font-family="Consolas, monospace" font-size="12.5" fill="black">+ hash(input: String): String</text>
+  <text x="470" y="736" text-anchor="middle" font-size="12.5" font-style="italic" fill="#555">Calcule un hash MD5 (code partagé, pas de duplication)</text>
 
   <!-- ===================== Flèches : implémente (réalisation) ===================== -->
-  <!-- Les labels ont un halo blanc (paint-order stroke) pour rester lisibles au-dessus des traits -->
-  <line x1="210" y1="320" x2="430" y2="177" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
-  <text x="160" y="270" font-size="12" font-style="italic" fill="black" stroke="white" stroke-width="4" paint-order="stroke">implémente</text>
+  <!-- Zone 215-340 : totalement libre, plus aucun texte a traverser -->
+  <line x1="210" y1="340" x2="430" y2="217" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
+  <text x="250" y="285" font-size="12" font-style="italic" fill="black">implémente</text>
 
-  <line x1="610" y1="320" x2="570" y2="177" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
-  <text x="618" y="270" font-size="12" font-style="italic" fill="black" stroke="white" stroke-width="4" paint-order="stroke">implémente</text>
+  <line x1="610" y1="340" x2="570" y2="217" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
+  <text x="598" y="285" font-size="12" font-style="italic" fill="black">implémente</text>
 
   <!-- ===================== Flèche : crée (Factory -> HashCracker) ===================== -->
   <line x1="700" y1="110" x2="654" y2="110" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
-  <text x="677" y="96" text-anchor="middle" font-size="12" font-style="italic" fill="black" stroke="white" stroke-width="4" paint-order="stroke">crée</text>
+  <text x="677" y="96" text-anchor="middle" font-size="12" font-style="italic" fill="black">crée</text>
 
   <!-- ===================== Flèches : utilise (-> MD5Util) ===================== -->
-  <line x1="352" y1="470" x2="382" y2="590" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
-  <text x="285" y="545" font-size="12" font-style="italic" fill="black" stroke="white" stroke-width="4" paint-order="stroke">utilise</text>
+  <!-- Zone 515-610 : totalement libre -->
+  <line x1="352" y1="515" x2="382" y2="610" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
+  <text x="290" y="565" font-size="12" font-style="italic" fill="black">utilise</text>
 
-  <line x1="468" y1="470" x2="500" y2="590" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
-  <text x="515" y="545" font-size="12" font-style="italic" fill="black" stroke="white" stroke-width="4" paint-order="stroke">utilise</text>
+  <line x1="468" y1="515" x2="500" y2="610" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
+  <text x="515" y="565" font-size="12" font-style="italic" fill="black">utilise</text>
 
   <!-- ===================== Légende ===================== -->
-  <line x1="20" y1="730" x2="1000" y2="730" stroke="#CCCCCC" stroke-width="1"/>
-  <text x="20" y="752" font-size="13" font-weight="700" fill="black">Légende :</text>
+  <line x1="20" y1="756" x2="1000" y2="756" stroke="#CCCCCC" stroke-width="1"/>
+  <text x="20" y="778" font-size="13" font-weight="700" fill="black">Légende :</text>
 
-  <line x1="110" y1="748" x2="150" y2="748" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
-  <text x="158" y="752" font-size="12" fill="black">implémente l'interface</text>
+  <line x1="110" y1="774" x2="150" y2="774" stroke="black" stroke-width="1.2" stroke-dasharray="7,5" marker-end="url(#implMarker)"/>
+  <text x="158" y="778" font-size="12" fill="black">implémente l'interface</text>
 
-  <line x1="330" y1="748" x2="370" y2="748" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
-  <text x="378" y="752" font-size="12" fill="black">crée / utilise (dépendance)</text>
+  <line x1="330" y1="774" x2="370" y2="774" stroke="black" stroke-width="1.2" stroke-dasharray="2,4" marker-end="url(#depMarker)"/>
+  <text x="378" y="778" font-size="12" fill="black">crée / utilise (dépendance)</text>
 </svg>
