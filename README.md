@@ -78,8 +78,7 @@ java -cp bin passwordcracker.Main -m DICO -h 00000000000000000000000000000000
 
 ## 7. Difficultés rencontrées
 
-Au début j'avais dupliqué le calcul du MD5 dans les deux stratégies, donc j'ai sorti ça dans une classe
-utilitaire `MD5Util` pour éviter la répétition.
+Au début nous avions dupliqué le calcul du MD5 dans les deux stratégies, donc apres avoir fait un meet nous avons décidé de sortir ça dans une classe utilitaire `MD5Util` pour éviter la répétition.
 
 Autre point : la fabrique doit connaître à l'avance toutes les stratégies disponibles. Du coup si on veut
 ajouter une nouvelle méthode de cassage plus tard, il faudra modifier `HashCrackerFactory` (voir la
