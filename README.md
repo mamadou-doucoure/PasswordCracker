@@ -87,8 +87,8 @@ java -cp bin passwordcracker.Main -m DICO -h 00000000000000000000000000000000
 ## 8. Conclusion
 
 Le patron Simple Factory a permis de centraliser la création des objets et de garder le programme
-principal indépendant des classes concrètes. Sa limite principale — la nécessité de modifier la fabrique
-pour ajouter une nouvelle stratégie, ce qui viole le principe Open/Closed — sera traitée dans la version
+principal indépendant des classes concrètes. Sa limite principale est la nécessité de modifier la fabrique
+pour ajouter une nouvelle stratégie, ce qui viole le principe Open/Closed , ce sera traitée dans la version
 suivante du projet à l'aide d'un patron de création plus flexible.
 
 Les réponses détaillées aux questions de réflexion du sujet sont disponibles dans
