@@ -2,15 +2,12 @@
 
 ## 1. Quels avantages apporte la fabrique simple ?
 
-- Elle **centralise** la création des objets `HashCracker` dans une seule classe (`HashCrackerFactory`),
-  au lieu de disperser des `new DictionaryHashCracker()` / `new BruteForceHashCracker()` dans tout le
-  programme.
-- Elle **découple** le code appelant (`Main`) des classes concrètes : `Main` ne manipule que le type
-  `HashCracker`, jamais `DictionaryHashCracker` ou `BruteForceHashCracker` directement.
-- Elle simplifie l'utilisation : un simple appel `HashCrackerFactory.create("DICO")` suffit, sans avoir à
-  connaître les détails de construction de chaque stratégie.
-- Elle rend le code plus lisible et plus facile à tester, puisque le point de création est unique et
-  identifiable.
+Le principal avantage, c'est que toute la création des objets `HashCracker` est centralisée dans une seule
+classe (`HashCrackerFactory`), au lieu d'avoir des `new DictionaryHashCracker()` ou
+`new BruteForceHashCracker()` éparpillés dans le programme. Ça découple aussi `Main` des classes concrètes :
+il ne manipule que le type `HashCracker`, jamais les implémentations directement. Pour l'utiliser, un simple
+appel `HashCrackerFactory.create("DICO")` suffit sans connaître les détails de construction de chaque
+stratégie, ce qui rend le code plus lisible et plus facile à tester.
 
 ## 2. Quels sont ses inconvénients ?
 
@@ -42,9 +39,6 @@ l'extension mais fermée à la modification**. Or ici, ajouter une stratégie im
 `HashCrackerFactory.create(...)` (ajouter un `case` au `switch`), donc de rouvrir une classe déjà écrite et
 testée.
 
-Une fabrique simple (Simple Factory) n'est d'ailleurs pas un vrai patron de conception au sens du Gang of
-Four : c'est un idiome pratique mais limité, souvent présenté comme point de départ avant d'évoluer vers un
-**Factory Method** ou une **fabrique paramétrée par réflexion / registre de stratégies**, qui permettent
-d'ajouter une stratégie sans toucher au code existant (chaque nouvelle classe s'enregistre elle-même auprès
-de la fabrique). C'est précisément la limitation annoncée en fin de sujet, à corriger dans le mini-projet
-suivant.
+D'ailleurs la Simple Factory n'est pas vraiment un patron de conception officiel du Gang of Four, plutôt un
+idiome pratique mais limité. C'est justement la limitation annoncée à la fin du sujet, qu'on va corriger
+dans le prochain mini-projet, sûrement avec un Factory Method ou un système d'enregistrement de stratégies.
