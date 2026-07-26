@@ -74,7 +74,7 @@ java -cp bin passwordcracker.Main -m DICO -h 00000000000000000000000000000000
 # Password not found
 ```
 
-*Vidéo de démonstration : [lien à ajouter]*
+*Vidéo de démonstration : https://youtu.be/1K60Ny4fixY*
 
 ## 7. Difficultés rencontrées
 
