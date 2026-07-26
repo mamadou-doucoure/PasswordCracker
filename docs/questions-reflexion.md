@@ -11,14 +11,13 @@ stratégie, ce qui rend le code plus lisible et plus facile à tester.
 
 ## 2. Quels sont ses inconvénients ?
 
-- La fabrique doit **connaître à l'avance** toutes les stratégies existantes : elle contient un `switch`
-  (ou `if/else`) qui énumère explicitement `"DICO"` et `"BRUTE"`.
-- Elle **viole le principe Open/Closed** (voir question 4) : impossible d'ajouter une stratégie sans
-  modifier son code.
-- C'est une classe avec des méthodes **statiques**, donc difficile à sous-classer ou à remplacer par une
-  autre implémentation (pas de polymorphisme sur la fabrique elle-même).
-- Si le nombre de stratégies augmente beaucoup, la fabrique devient un point de couplage central qui grossit
-  indéfiniment (elle doit importer et connaître toutes les classes concrètes).
+Le principal inconvénient, c'est que la fabrique doit connaître à l'avance toutes les stratégies
+existantes : elle contient un `switch` (ou `if/else`) qui énumère explicitement `"DICO"` et `"BRUTE"`. Ça
+viole aussi le principe Open/Closed (voir question 4), puisqu'on ne peut pas ajouter une stratégie sans
+modifier son code. En plus ses méthodes sont statiques, donc difficile à sous-classer ou à remplacer par
+une autre implémentation. Et si le nombre de stratégies augmente beaucoup, la fabrique devient un point de
+couplage central qui grossit indéfiniment, puisqu'elle doit importer et connaître toutes les classes
+concrètes.
 
 ## 3. Que faut-il modifier lorsqu'une nouvelle stratégie est ajoutée ?
 
@@ -26,11 +25,11 @@ Pour ajouter une nouvelle méthode de cassage (par exemple `RAINBOW` pour une at
 faut :
 
 1. Créer une nouvelle classe (ex. `RainbowTableHashCracker`) qui implémente `HashCracker`.
-2. **Modifier le code de `HashCrackerFactory.create(...)`** pour ajouter un nouveau cas dans le `switch`
+2. Modifier le code de `HashCrackerFactory.create(...)` pour ajouter un nouveau cas dans le `switch`
    (`case "RAINBOW": return new RainbowTableHashCracker();`).
 
-Le point important est que cette deuxième étape oblige à **modifier une classe existante et déjà
-fonctionnelle**, ce qui est risqué (régression possible) et contraire à l'idéal d'extensibilité.
+Le point important, c'est que cette deuxième étape oblige à modifier une classe existante et déjà
+fonctionnelle, ce qui est risqué (régression possible) et contraire à l'idéal d'extensibilité.
 
 ## 4. La fabrique respecte-t-elle le principe Open/Closed ?
 
